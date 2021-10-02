@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { appReducer } from './core/store/app.reducer';
 import { FrontendModule } from './modules/frontend/frontend.module';
+import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,11 @@ import { FrontendModule } from './modules/frontend/frontend.module';
     BrowserModule,
     AppRoutingModule,
     FrontendModule,
+    SharedModule,
     StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
