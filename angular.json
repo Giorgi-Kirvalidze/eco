@@ -103,9 +103,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "e-commerce-client"
+  "defaultProject": "e-commerce-client",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
