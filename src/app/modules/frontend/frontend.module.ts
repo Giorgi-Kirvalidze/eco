@@ -8,6 +8,8 @@ import { AuthSignupComponent } from './modules/auth/pages/auth-signup/auth-signu
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     CommonModule,
     FrontendRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     SharedModule
   ]
 })

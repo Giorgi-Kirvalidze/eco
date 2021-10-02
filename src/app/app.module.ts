@@ -11,6 +11,7 @@ import { appReducer } from './core/store/app.reducer';
 import { FrontendModule } from './modules/frontend/frontend.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignupEffect } from './modules/frontend/modules/auth/store/auth.effects';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FrontendModule,
     SharedModule,
     StoreModule.forRoot(appReducer),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([SignupEffect]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     BrowserAnimationsModule,
   ],

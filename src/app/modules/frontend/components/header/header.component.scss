@@ -1,6 +1,7 @@
 .header {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   height: 80px;
   &__auth {
     display: flex;
@@ -12,12 +13,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 100%;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
   background-color: rgba(179, 161, 161, 0.342);
   text-decoration: none;
   border: 1px solid skyblue;
+  font-size: 14px;
 }
 .btn--login,
 .btn--signup {

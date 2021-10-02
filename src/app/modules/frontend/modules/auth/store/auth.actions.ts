@@ -7,6 +7,7 @@ export const signupStart = createAction(
         lastName:string,
         email: string,
         password: string,
+        confirmPassword:string,
         number:number
     }>()
 );
