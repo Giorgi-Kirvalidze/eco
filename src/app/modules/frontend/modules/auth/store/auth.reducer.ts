@@ -35,7 +35,7 @@ const initialState: State = {
         AuthActions.signupFail,
         (state, action) => ({
           ...state,
-          authError: action.errorMessage,
+          authError: action.err,
           loading: false
         })
       ),
@@ -44,4 +44,3 @@ const initialState: State = {
   export function authReducer(state: State | undefined, action: Action) {
     return _authReducer(state, action);
   }
-  

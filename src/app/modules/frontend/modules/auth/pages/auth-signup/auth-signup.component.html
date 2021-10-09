@@ -1,6 +1,6 @@
-<div *ngIf="isLoading">
-    <mat-spinner></mat-spinner>
-</div>
+<!--<div *ngIf="isLoading">-->
+<!--    <mat-spinner></mat-spinner>-->
+<!--</div>-->
 <form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm)" class="form">
     <div class="form__doubleField">
         <mat-form-field appearance="standard">
@@ -10,7 +10,7 @@
         <mat-form-field appearance="standard">
             <mat-label>LastName</mat-label>
             <input type="text" formControlName="lastName" matInput>
-        </mat-form-field>   
+        </mat-form-field>
     </div>
     <mat-form-field appearance="standard">
         <mat-label>E-Mail</mat-label>
