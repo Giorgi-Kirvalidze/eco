@@ -36,7 +36,7 @@ export class AuthSignupComponent implements OnInit,OnDestroy {
         email:['',[Validators.email,Validators.required]],
         password:['',[Validators.required]],
         confirmPassword:['',[Validators.required,]],
-        number:['',Validators.required]
+        number:['',[Validators.required,Validators.pattern('[- +()0-9]+'),Validators.minLength(9),Validators.maxLength(12)]]
     },{
       validator: MustMatch('password', 'confirmPassword')
     })

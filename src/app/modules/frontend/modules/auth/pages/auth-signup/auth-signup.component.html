@@ -2,7 +2,6 @@
 <!--    <mat-spinner></mat-spinner>-->
 <!--</div>-->
 <form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm)" class="form">
-  {{signupForm.errors | json}}
     <div class="form__doubleField">
         <mat-form-field appearance="standard">
             <mat-label>FirstName</mat-label>
@@ -30,7 +29,8 @@
     </div>
     <mat-form-field appearance="standard">
         <mat-label>Number</mat-label>
-        <input type="tel" formControlName="number" type="number" matInput>
+        <input type="tel" numbersOnly addSpace [spaceOn]=3 [maxNumber]=9  formControlName="number" type="text" matInput>
     </mat-form-field>
+  {{signupForm.controls['number'].errors | json}}
     <button [disabled]="signupForm.invalid" type="submit" mat-stroked-button color="primary">Primary</button>
 </form>
