@@ -44,16 +44,18 @@ export class SignupEffect{
                   console.log(err)
                   AuthActions.signupFail({ err });
                   this.alertService.error(err.error.message.message,
-                    {autoClose: false}
+                    {autoClose: false, fade:true}
                   );
                   return throwError(err.error.message.message)
                 }),
                 map(resData => {
-                    // this.router.navigate(['']);
                     this.alertService.success(resData.message,
-                      {autoClose: true}
+                      {autoClose: true,fade:true}
                     );
-                    return handleSignup(
+                    setTimeout(()=>{
+                      this.router.navigate(['']);
+                    },3500)
+                  return handleSignup(
                       resData.message,
                       resData.token
                     )

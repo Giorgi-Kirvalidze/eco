@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import * as fromApp from '../../../../../../core/store/app.reducer';
 import * as AuthActions from '../../store/auth.actions';
+import {MustMatch} from "../../../../../../core/matcher/mustMatch";
 
 @Component({
   selector: 'app-auth-signup',
@@ -15,6 +16,7 @@ export class AuthSignupComponent implements OnInit,OnDestroy {
 
   isLoading = false;
   error: string = '';
+  hide = true;
   public storeSub!: Subscription;
 
   constructor(private fb:FormBuilder,private store: Store<fromApp.AppState>) { }
@@ -33,8 +35,10 @@ export class AuthSignupComponent implements OnInit,OnDestroy {
         lastName:['',[Validators.required]],
         email:['',[Validators.email,Validators.required]],
         password:['',[Validators.required]],
-        confirmPassword:['',[Validators.required]],
+        confirmPassword:['',[Validators.required,]],
         number:['',Validators.required]
+    },{
+      validator: MustMatch('password', 'confirmPassword')
     })
   }
 
@@ -51,7 +55,7 @@ export class AuthSignupComponent implements OnInit,OnDestroy {
     this.store.dispatch(
       AuthActions.signupStart({number,email,password,firstName,lastName,confirmPassword})
     )
-    form.reset();
+    // form.reset();
   }
 
   ngOnDestroy() {
