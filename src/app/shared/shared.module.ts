@@ -4,23 +4,32 @@ import { MaterialModule } from './angular-material.module';
 import { AlertComponent } from './components/alert/alert.component';
 import {AddSpaceDirective} from "./directives/addSpace.directive";
 import {OnlynumberDirective} from "./directives/onlyNumbers.directive";
-
+import {AdHostDirective} from "./directives/adHost.directive";
+import { AdBannerComponent } from './components/ad-banner/ad-banner.component';
+import {ProductAdComponent} from "./components/product-ad.components";
 
 
 @NgModule({
   declarations: [
     AlertComponent,
     AddSpaceDirective,
-    OnlynumberDirective
+    OnlynumberDirective,
+    AdHostDirective,
+    AdBannerComponent,
+    ProductAdComponent
   ],
   imports: [
     CommonModule,
     MaterialModule
   ],
-  exports:[
+  exports: [
     MaterialModule,
     AlertComponent,
     AddSpaceDirective,
-    OnlynumberDirective  ]
+    OnlynumberDirective,
+    AdHostDirective,
+    AdBannerComponent,
+    ProductAdComponent
+  ]
 })
 export class SharedModule { }
