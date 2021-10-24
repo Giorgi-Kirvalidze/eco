@@ -7,6 +7,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 
 export class MaturityPipe implements  PipeTransform{
   constructor(private elRef : ElementRef,private renderer: Renderer2,private _domSanitizer: DomSanitizer) {
+    this.el = this.elRef.nativeElement;
   }
 
   range : any = {
@@ -15,6 +16,7 @@ export class MaturityPipe implements  PipeTransform{
     default: 'დღე'
   }
   divisors = [7,30];
+  el!: HTMLDivElement;
 
   getHighestDivisor(maturity: number){
     const tempArr = [];
@@ -46,16 +48,14 @@ export class MaturityPipe implements  PipeTransform{
   transform(maturity: number): any {
     const minDivisor = this.divisors[0];
     if(maturity < (minDivisor - this.getKeyFromRange(minDivisor)) && maturity >= 1 ){
-      return this._domSanitizer.bypassSecurityTrustHtml(`${maturity.toString()} ${this.range['default']}`);
+      return this.el.innerHTML = `${maturity.toString()} ${this.range['default']}`;
     }
     if(maturity < minDivisor){
         const val = this.getValueFromRange(minDivisor);
-        return this._domSanitizer.bypassSecurityTrustHtml(`1 ${val}`);
+        return this.el.innerHTML = `1 ${val}`;
       }
     if(this.isBetween(maturity, 340,365)){
-        return this._domSanitizer.bypassSecurityTrustHtml(`${maturity} day of 365`);
-    }else{
-      return this._domSanitizer.bypassSecurityTrustHtml(`invalid Date`);
+        return this.el.innerHTML = `${maturity} day of 365.`
     }
 
     const maxDivisor = this.getHighestDivisor(maturity);
@@ -66,14 +66,14 @@ export class MaturityPipe implements  PipeTransform{
       const nextQuotientInteger = ((+quotient * maxDivisor) + maxDivisor);
 
       if(reminder > keyRange && !this.isBetween(maturity,nextQuotientInteger - keyRange, nextQuotientInteger + keyRange)){
-        return this._domSanitizer.bypassSecurityTrustHtml(`${maturity.toString()} ${this.range['default']}`);
+        return this.el.innerHTML = `${maturity.toString()} ${this.range['default']}`;
       }
 
       const weekOrMonth = this.range[maxDivisor][keyRange];
-      if(((nextQuotientInteger - keyRange) <= maturity && maturity <= (nextQuotientInteger + keyRange) )){
-        return this._domSanitizer.bypassSecurityTrustHtml(`${quotient + 1} ${weekOrMonth} `);
+      if(this.isBetween(maturity,nextQuotientInteger - keyRange, nextQuotientInteger + keyRange)){
+        return this.el.innerHTML =`${quotient + 1} ${weekOrMonth} `;
       }
-      return this._domSanitizer.bypassSecurityTrustHtml(`${quotient} ${weekOrMonth} `);
+      return this.el.innerHTML = `${quotient} ${weekOrMonth} `;
     }
   }
 }
