@@ -18,6 +18,7 @@ export class AlertComponent implements OnInit, OnDestroy {
   alerts: Alert[] = [];
   alertSubscription!: Subscription;
   routeSubscription!: Subscription;
+  timeout : number | undefined;
 
   constructor(private router: Router, private alertService: AlertService) { }
 
@@ -49,6 +50,7 @@ export class AlertComponent implements OnInit, OnDestroy {
     // unsubscribe to avoid memory leaks
     this.alertSubscription.unsubscribe();
     this.routeSubscription.unsubscribe();
+    clearTimeout(this.timeout);
   }
 
   removeAlert(alert: Alert) {
@@ -58,7 +60,7 @@ export class AlertComponent implements OnInit, OnDestroy {
       // @ts-ignore
       this.alerts.find(x => x === alert).fade = true;
 
-      setTimeout(() => {
+     this.timeout =  setTimeout(() => {
         this.alerts = this.alerts.filter(x => x !== alert);
       }, 250);
     } else {
