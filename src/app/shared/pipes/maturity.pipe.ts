@@ -18,6 +18,8 @@ export class MaturityPipe implements  PipeTransform{
   divisors = [7,30];
   el!: HTMLDivElement;
 
+
+
   getHighestDivisor(maturity: number){
     const tempArr = [];
     for(const i of this.divisors){

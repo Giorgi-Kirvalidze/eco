@@ -6,3 +6,9 @@
 <div style=" margin: 0 auto; padding: 200px;width:120px;  background-color:darkred; color : white; font-size: 20px" [innerHTML]="345 | maturity"></div>
 <span timepass [setDate]="'Sat Oct 23 2021 17:41:12 GMT+0400 '"></span>
 <div countDown [dateEnd]="'2021-10-24T10:12:49+04:00'"></div>
+<mat-form-field style="margin: 200px" appearance="legacy">
+  <input (keypress)="onNumberInput($event)"  type="number" matInput placeholder="Placeholder">
+</mat-form-field>
+<h1>Data received from websocket : {{testData}}</h1>
+<h2>userId fromServer : {{userId}}</h2>
+<h2>userId fromClient : {{clientSocketId}}</h2>
